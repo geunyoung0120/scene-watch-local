@@ -1,0 +1,198 @@
+{
+  "metadata": {
+    "model": "facebook/dinov2-small",
+    "feature_dim": 384,
+    "feature": "last_hidden_state[:,0,:]",
+    "preprocess_version": "rgb-letterbox-224-imagenet-v1",
+    "manifest_sha256": "2e5786fa56e256ca98d5a2e2bfc33e269a8ae79e73fd9a83ec602d56a5040519",
+    "C": 0.01,
+    "label_0": "non-violent",
+    "label_1": "physical violence",
+    "backbone_frozen": true,
+    "training_images": 4800,
+    "threshold": 0.5,
+    "dataset": "AIRTLab; research/educational use",
+    "scope": "Staged physical assault vs friendly interactions; experimental classification probability.",
+    "manifest_path": "data/views-v2/manifest.csv",
+    "augmentation": [
+      "mirror",
+      "original",
+      "perspective_left",
+      "perspective_right",
+      "roll_left",
+      "roll_right"
+    ],
+    "dataset_images": 5100,
+    "original_images": 1100
+  },
+  "validation_candidates": [
+    {
+      "C": 0.0001,
+      "accuracy": 0.8,
+      "precision": 0.8947368421052632,
+      "recall": 0.68,
+      "f1": 0.7727272727272727,
+      "roc_auc": 0.8896,
+      "brier_score": 0.17161593328516406,
+      "log_loss": 0.5258959691362456,
+      "confusion_matrix": [
+        [
+          46,
+          4
+        ],
+        [
+          16,
+          34
+        ]
+      ]
+    },
+    {
+      "C": 0.001,
+      "accuracy": 0.82,
+      "precision": 0.9210526315789473,
+      "recall": 0.7,
+      "f1": 0.7954545454545454,
+      "roc_auc": 0.9356000000000001,
+      "brier_score": 0.12658306648951295,
+      "log_loss": 0.4024541646740392,
+      "confusion_matrix": [
+        [
+          47,
+          3
+        ],
+        [
+          15,
+          35
+        ]
+      ]
+    },
+    {
+      "C": 0.01,
+      "accuracy": 0.82,
+      "precision": 0.9210526315789473,
+      "recall": 0.7,
+      "f1": 0.7954545454545454,
+      "roc_auc": 0.9332,
+      "brier_score": 0.12348203853064352,
+      "log_loss": 0.3731851456792561,
+      "confusion_matrix": [
+        [
+          47,
+          3
+        ],
+        [
+          15,
+          35
+        ]
+      ]
+    },
+    {
+      "C": 0.1,
+      "accuracy": 0.83,
+      "precision": 0.9230769230769231,
+      "recall": 0.72,
+      "f1": 0.8089887640449438,
+      "roc_auc": 0.9132,
+      "brier_score": 0.13781983953420857,
+      "log_loss": 0.447082556469881,
+      "confusion_matrix": [
+        [
+          47,
+          3
+        ],
+        [
+          14,
+          36
+        ]
+      ]
+    },
+    {
+      "C": 1,
+      "accuracy": 0.8,
+      "precision": 0.8947368421052632,
+      "recall": 0.68,
+      "f1": 0.7727272727272727,
+      "roc_auc": 0.9016,
+      "brier_score": 0.15281740782840839,
+      "log_loss": 0.6171054728213307,
+      "confusion_matrix": [
+        [
+          46,
+          4
+        ],
+        [
+          16,
+          34
+        ]
+      ]
+    },
+    {
+      "C": 10,
+      "accuracy": 0.82,
+      "precision": 0.9210526315789473,
+      "recall": 0.7,
+      "f1": 0.7954545454545454,
+      "roc_auc": 0.8932,
+      "brier_score": 0.164895135953072,
+      "log_loss": 0.8233589468401163,
+      "confusion_matrix": [
+        [
+          47,
+          3
+        ],
+        [
+          15,
+          35
+        ]
+      ]
+    }
+  ],
+  "test_frames": {
+    "accuracy": 0.75,
+    "precision": 0.7016129032258065,
+    "recall": 0.87,
+    "f1": 0.7767857142857143,
+    "roc_auc": 0.8825999999999999,
+    "brier_score": 0.15524404068468473,
+    "log_loss": 0.4677321972762269,
+    "confusion_matrix": [
+      [
+        63,
+        37
+      ],
+      [
+        13,
+        87
+      ]
+    ]
+  },
+  "test_five_frame_clip_mean": {
+    "accuracy": 0.85,
+    "precision": 0.8181818181818182,
+    "recall": 0.9,
+    "f1": 0.8571428571428571,
+    "roc_auc": 0.9375,
+    "brier_score": 0.12081586717467245,
+    "log_loss": 0.3883769772793359,
+    "confusion_matrix": [
+      [
+        16,
+        4
+      ],
+      [
+        2,
+        18
+      ]
+    ]
+  },
+  "test_frame_count": 200,
+  "test_clip_count": 40,
+  "test_independent_scene_count": 20,
+  "elapsed_seconds": 0.1978474169736728,
+  "limits": [
+    "Source labels apply to clips, not exact action boundaries.",
+    "Same room and actors appear in all splits; this is not an unseen-environment evaluation.",
+    "Five-frame mean smooths scores and does not model movement direction.",
+    "50/50 source prevalence differs from a normal webcam; scores are not real-world incident probabilities."
+  ]
+}

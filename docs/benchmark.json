@@ -1,0 +1,40 @@
+{
+  "device": "mps",
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "model": "DINOv2 Small CLS + logistic",
+  "sample_count": 60,
+  "warmup_count": 9,
+  "model_load_ms": 2252.79070797842,
+  "first_inference_ms": 224.51145795639604,
+  "timing_ms": {
+    "decode_ms": {
+      "p50": 0.4654795047827065,
+      "p95": 0.6338021368719636,
+      "mean": 0.48134512617252767
+    },
+    "embedding_ms": {
+      "p50": 10.069562471471727,
+      "p95": 10.65291398554109,
+      "mean": 10.089356186411655
+    },
+    "classifier_ms": {
+      "p50": 0.03045849734917283,
+      "p95": 0.05099375848658382,
+      "mean": 0.033532727199296154
+    },
+    "inference_ms": {
+      "p50": 10.569354461040348,
+      "p95": 11.160923296120018,
+      "mean": 10.604234039783478
+    },
+    "pipeline_ms": {
+      "p50": 10.641061991918832,
+      "p95": 11.213925102492794,
+      "mean": 10.649870844402662
+    }
+  },
+  "recommended_interval_ms": 100,
+  "interval_rule": "ceil(p95 * 1.25 / 10) * 10 ms, minimum 100 ms",
+  "five_sample_span_ms": 400,
+  "excludes": "Camera capture, browser JPEG encoding, HTTP transport and browser rendering"
+}

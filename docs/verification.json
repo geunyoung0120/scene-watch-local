@@ -1,0 +1,23 @@
+{
+  "browser": "Chromium headless; prerecorded AIRTLab file as synthetic camera",
+  "physical_camera_used": false,
+  "passed": [
+    "ready screen",
+    "camera preview",
+    "five-frame exact arithmetic",
+    "start/stop",
+    "restart resets history",
+    "permission error",
+    "mobile layout",
+    "no browser exceptions"
+  ],
+  "browser_first_run_analyses": 15,
+  "observed_browser_interval": "101ms",
+  "http_samples": 30,
+  "http_p50_ms": 12.331145524512976,
+  "http_p95_ms": 18.71357759227975,
+  "physical_camera_permission": "left for user on Start",
+  "unit_test_count": 13,
+  "clean_code_export_tests_passed": true,
+  "model_activation_hash_guard_checked": true
+}

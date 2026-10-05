@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="app-token" content="__APP_TOKEN__">
+  <title>Scene Watch · 실시간 폭행 감지</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="/" aria-label="Scene Watch 홈"><span class="brand-icon">S<span></span></span><span>SCENE WATCH<small>LOCAL VISION LAB</small></span></a>
+      <div class="header-status"><span class="dot" id="connection-dot"></span><span id="connection">모델 연결 중</span><span class="tag">로컬 실행</span></div>
+    </header>
+    <main>
+      <div class="intro"><div><p class="eyebrow">REAL-TIME VIOLENCE DETECTION</p><h1>지금의 장면을, 더 선명하게.</h1><p class="subtitle">카메라 속 상황을 분석하고 최근 5장의 평균 위험도를 확인하세요.</p></div><div class="experiment">EXPERIMENT 02<span>폭행 상황 감지</span></div></div>
+      <div id="message" class="message" role="alert" hidden></div>
+      <div class="workspace">
+        <section class="camera-card" aria-labelledby="camera-heading">
+          <div class="card-top"><h2 id="camera-heading"><span class="tiny-camera"></span>카메라 뷰</h2><span class="source-status" id="source-status">대기 중</span></div>
+          <div class="viewfinder" id="viewfinder">
+            <video id="video" autoplay muted playsinline aria-label="실시간 카메라 영상"></video>
+            <div class="placeholder" id="placeholder"><div class="camera-symbol"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="m16 10 5-3v10l-5-3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div><h3>카메라를 연결해 시작하세요</h3><p>시작하면 브라우저에서 카메라 권한을 요청합니다.</p><span class="privacy-note">영상은 이 노트북에서만 처리됩니다</span></div>
+            <div class="video-top" id="video-top" hidden><span class="live-pill"><i></i> LIVE</span><span id="resolution"></span></div>
+            <div class="video-bottom" id="video-bottom" hidden><span id="camera-name">노트북 카메라</span><span id="session-clock">00:00</span></div>
+            <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+          </div>
+          <div class="camera-controls"><div><button id="start" class="primary" disabled><span>▶</span> 카메라 시작</button><button id="stop" class="secondary" disabled>중지</button></div><label class="mirror"><input type="checkbox" id="mirror" checked> 좌우 반전</label></div>
+        </section>
+        <section class="risk-card" aria-labelledby="risk-heading">
+          <div class="card-top"><h2 id="risk-heading">폭행 위험도</h2><span class="tag subtle">최근 5장 평균</span></div>
+          <div class="risk-main"><div class="risk-state" id="risk-state">분석 대기</div><div class="score"><span id="risk-value">—</span><span class="percent">%</span></div><p id="risk-description">카메라를 시작하면 분석 결과가 표시됩니다.</p></div>
+          <div class="risk-meter"><div id="risk-meter-fill"></div></div><div class="meter-labels"><span>낮음</span><span>높음</span></div>
+          <div class="window-row"><span>평균에 사용한 사진</span><div id="window-dots" aria-label="0 / 5장"><i></i><i></i><i></i><i></i><i></i><b id="window-count">0 / 5</b></div></div>
+          <dl class="live-stats"><div><dt>현재 사진</dt><dd id="instant">—<small>%</small></dd></div><div><dt>한 장 처리시간</dt><dd id="latency">—<small>ms</small></dd></div><div><dt>분석 간격</dt><dd id="interval">—<small>ms</small></dd></div></dl>
+          <div class="local-note"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" aria-hidden="true"><path d="m12 3 8 3v5c0 5-8 10-8 10S4 16 4 11V6l8-3Z" stroke="currentColor" stroke-width="1.5"/><path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="1.5"/></svg><span>카메라 사진 저장·외부 전송 없음</span></div>
+        </section>
+      </div>
+      <section class="timeline-card" aria-labelledby="timeline-heading"><div class="card-top"><div><h2 id="timeline-heading">위험도 흐름</h2><p>최근 분석 결과 · 5장 이동평균</p></div><span id="history-status">결과를 기다리는 중</span></div><div class="chart-wrap"><div class="chart-axis"><span>100%</span><span>50%</span><span>0%</span></div><canvas id="history" aria-label="최근 위험도 추세 그래프"></canvas></div><div class="chart-footer"><span>이전</span><span id="window-span">5장의 분석이 완료되면 평균을 표시합니다</span><span>현재</span></div></section>
+      <div class="bottom-grid"><section class="method-card"><p class="eyebrow">HOW IT WORKS</p><h2>사진 한 장에서, 5장의 평균까지</h2><div class="steps"><span>카메라 사진</span><b>→</b><span>DINOv2</span><b>→</b><span>폭행 분류</span><b>→</b><span class="highlight">5장 평균</span></div><p>분석은 측정된 처리속도에 맞춰 실행됩니다. 요청이 밀리면 다음 최신 사진을 사용합니다.</p></section><section class="benchmark-card"><p class="eyebrow">ON THIS LAPTOP</p><h2>실측 성능</h2><div class="benchmark-grid"><div><strong id="bench-p50">—</strong><span>처리시간 중앙값</span></div><div><strong id="bench-p95">—</strong><span>95% 처리시간</span></div><div><strong id="device">—</strong><span>연산 장치</span></div></div></section></div>
+      <aside class="model-note"><span>실험 모델 안내</span><p>표시되는 위험도는 학습된 폭행 장면에 대한 분류 점수입니다. 두 카메라로 촬영한 AIRTLab 영상과 좌우 반전·기울기·원근 변형 사진으로 학습해 새로운 장소나 혼자 있는 장면에서 오탐할 수 있습니다. 자기 몸을 때리는 동작은 현재 학습·검증 대상에 포함되지 않았으며 낮은 점수여도 놓친 동작일 수 있습니다. 실제 폭행 발생 확률이나 안전을 보장하는 수치는 아닙니다.</p></aside>
+    </main>
+    <footer><span>SCENE WATCH <b>·</b> LOCAL-FIRST VISION</span><span>원본 1,100장 + 구도 변형 4,000장 <b>·</b> AIRTLab 연구·교육용</span></footer>
+  </div>
+  <canvas id="capture" hidden></canvas>
+</body>
+</html>
