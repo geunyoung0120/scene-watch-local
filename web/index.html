@@ -16,7 +16,7 @@
       <div class="header-status"><span class="dot" id="connection-dot"></span><span id="connection">모델 연결 중</span><span class="tag">로컬 실행</span></div>
     </header>
     <main>
-      <div class="intro"><div><p class="eyebrow">REAL-TIME VIOLENCE DETECTION</p><h1>지금의 장면을, 더 선명하게.</h1><p class="subtitle">카메라 속 상황을 분석하고 최근 5장의 평균 위험도를 확인하세요.</p></div><div class="experiment">EXPERIMENT 02<span>폭행 상황 감지</span></div></div>
+      <div class="intro"><div><p class="eyebrow">REAL-TIME VIOLENCE DETECTION</p><h1>지금의 장면을, 더 선명하게.</h1><p class="subtitle">카메라 속 상황을 분석하고 최근 5장의 평균 위험도를 확인하세요.</p></div><div class="experiment">EXPERIMENT 03<span>폭행 상황 감지</span></div></div>
       <div id="message" class="message" role="alert" hidden></div>
       <div class="workspace">
         <section class="camera-card" aria-labelledby="camera-heading">
@@ -41,9 +41,9 @@
       </div>
       <section class="timeline-card" aria-labelledby="timeline-heading"><div class="card-top"><div><h2 id="timeline-heading">위험도 흐름</h2><p>최근 분석 결과 · 5장 이동평균</p></div><span id="history-status">결과를 기다리는 중</span></div><div class="chart-wrap"><div class="chart-axis"><span>100%</span><span>50%</span><span>0%</span></div><canvas id="history" aria-label="최근 위험도 추세 그래프"></canvas></div><div class="chart-footer"><span>이전</span><span id="window-span">5장의 분석이 완료되면 평균을 표시합니다</span><span>현재</span></div></section>
       <div class="bottom-grid"><section class="method-card"><p class="eyebrow">HOW IT WORKS</p><h2>사진 한 장에서, 5장의 평균까지</h2><div class="steps"><span>카메라 사진</span><b>→</b><span>DINOv2</span><b>→</b><span>폭행 분류</span><b>→</b><span class="highlight">5장 평균</span></div><p>분석은 측정된 처리속도에 맞춰 실행됩니다. 요청이 밀리면 다음 최신 사진을 사용합니다.</p></section><section class="benchmark-card"><p class="eyebrow">ON THIS LAPTOP</p><h2>실측 성능</h2><div class="benchmark-grid"><div><strong id="bench-p50">—</strong><span>처리시간 중앙값</span></div><div><strong id="bench-p95">—</strong><span>95% 처리시간</span></div><div><strong id="device">—</strong><span>연산 장치</span></div></div></section></div>
-      <aside class="model-note"><span>실험 모델 안내</span><p>표시되는 위험도는 학습된 폭행 장면에 대한 분류 점수입니다. 두 카메라로 촬영한 AIRTLab 영상과 좌우 반전·기울기·원근 변형 사진으로 학습해 새로운 장소나 혼자 있는 장면에서 오탐할 수 있습니다. 자기 몸을 때리는 동작은 현재 학습·검증 대상에 포함되지 않았으며 낮은 점수여도 놓친 동작일 수 있습니다. 실제 폭행 발생 확률이나 안전을 보장하는 수치는 아닙니다.</p></aside>
+      <aside class="model-note"><span>실험 모델 안내</span><p>표시되는 위험도는 학습된 폭행 장면에 대한 분류 점수입니다. AIRTLab 폭행 장면과 일상 인물·군중·배경 사진을 학습했습니다. 새로운 장소의 폭행 및 실제 웹캠 환경에서는 오탐과 누락이 생길 수 있습니다. 자기 몸을 때리는 동작은 현재 학습·검증 대상에 포함되지 않았으며 낮은 점수여도 놓친 동작일 수 있습니다. 실제 폭행 발생 확률이나 안전을 보장하는 수치는 아닙니다.</p></aside>
     </main>
-    <footer><span>SCENE WATCH <b>·</b> LOCAL-FIRST VISION</span><span>원본 1,100장 + 구도 변형 4,000장 <b>·</b> AIRTLab 연구·교육용</span></footer>
+    <footer><span>SCENE WATCH <b>·</b> LOCAL-FIRST VISION</span><span>원본 1,648장 + 구도 변형 4,000장 <b>·</b> AIRTLab · COCO</span></footer>
   </div>
   <canvas id="capture" hidden></canvas>
 </body>

@@ -12,12 +12,15 @@
     "no browser exceptions"
   ],
   "browser_first_run_analyses": 15,
-  "observed_browser_interval": "101ms",
+  "observed_browser_interval": "100ms",
   "http_samples": 30,
-  "http_p50_ms": 12.331145524512976,
-  "http_p95_ms": 18.71357759227975,
+  "http_p50_ms": 12.066666560713202,
+  "http_p95_ms": 14.871547796064984,
   "physical_camera_permission": "left for user on Start",
-  "unit_test_count": 13,
+  "unit_test_count": 16,
+  "model_version": "people-v3",
+  "near_duplicate_and_parent_split_overlap": 0,
+  "reviewed_image_hashes_bound": true,
   "clean_code_export_tests_passed": true,
   "model_activation_hash_guard_checked": true
 }
